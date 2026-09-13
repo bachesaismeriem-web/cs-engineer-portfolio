@@ -1,0 +1,112 @@
+---
+import { engineerData } from '../data/engineer.ts';
+---
+
+<section id="about" class="reveal relative w-full bg-[#09030e] text-white py-16 px-4 md:px-8 flex justify-center items-center font-sans scroll-mt-24">
+  <!-- Outer Card Container -->
+  <div class="relative w-full max-w-6xl bg-[#0f071a]/90 backdrop-blur-md border border-purple-900/50 rounded-2xl p-8 md:p-12 shadow-[0_0_40px_rgba(147,51,235,0.15)] flex flex-col lg:flex-row gap-12 items-center justify-between">
+    
+    <!-- Left Column: About Me Text & Details -->
+    <div class="flex-1 flex flex-col gap-6 max-w-xl">
+      <div>
+        <span class="text-pink-500 font-bold tracking-[0.2em] text-xs uppercase">ABOUT ME</span>
+        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mt-2 text-white">
+          Hi, I'm a Software<br />Engineering Student
+        </h2>
+      </div>
+
+      <p class="text-gray-300 text-sm md:text-base leading-relaxed">
+        I'm passionate about technology and enjoy building real-world solutions. I have a strong interest in web development, system administration, networking and problem solving, I'm always eager to learn, improve my skills and work on meaningful projects.
+      </p>
+
+      <!-- Icons / Info Row -->
+      <div class="flex flex-wrap items-center gap-8 pt-2">
+        <!-- Location -->
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-400 text-sm">
+            📍
+          </div>
+          <div>
+            <div class="text-xs text-white font-medium">Algeria</div>
+            <div class="text-xs text-gray-400">(Oran / Algiers)</div>
+          </div>
+        </div>
+
+        <!-- University -->
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 text-sm">
+            🎓
+          </div>
+          <div>
+            <div class="text-xs text-white font-medium">University</div>
+            <div class="text-xs text-gray-400">Software Engineering</div>
+          </div>
+        </div>
+
+        <!-- Status -->
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 text-sm">
+            🔄
+          </div>
+          <div>
+            <div class="text-xs text-white font-medium">Open to</div>
+            <div class="text-xs text-gray-400">Opportunities</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Signature text watermark -->
+      <div class="pt-4">
+        <span class="font-['Caveat',cursive] italic text-3xl text-pink-400 tracking-wide select-none">
+          Software Engineer
+        </span>
+      </div>
+    </div>
+
+    <!-- Right Column: Code Editor Mockup -->
+    <div class="w-full lg:w-[460px] bg-[#07020b] border border-purple-500/30 rounded-xl shadow-[0_0_25px_rgba(0,0,0,0.8)] overflow-hidden">
+      <!-- Window Header Bar -->
+      <div class="bg-[#100619] px-4 py-2.5 border-b border-purple-500/20 flex items-center justify-between">
+        <div class="flex items-center gap-2 text-xs text-purple-300 font-mono">
+          <span class="text-orange-400">📁</span>
+          <span>about_me.ts</span>
+        </div>
+        <!-- Window control icons -->
+        <div class="flex items-center gap-2 text-gray-400 text-xs">
+          <span>⚙️</span>
+          <span>📋</span>
+        </div>
+      </div>
+
+      <!-- Code Body -->
+      <div class="p-5 font-mono text-xs md:text-sm text-gray-300 leading-relaxed overflow-x-auto">
+        <p>
+          <span class="text-pink-500">conct</span> <span class="text-blue-300">me</span> = &#40;
+        </p>
+        <p class="pl-4">
+          <span class="text-purple-300">name</span>: <span class="text-green-400">"{engineerData.name}"</span>,
+        </p>
+        <p class="pl-4">
+          <span class="text-purple-300">focus</span>: &#40;
+        </p>
+        <p class="pl-8 text-green-300">"{engineerData.focus[0]}",</p>
+        <p class="pl-8 text-green-300">"{engineerData.focus[1]}",</p>
+        <p class="pl-8 text-green-300">"{engineerData.focus[2]}",</p>
+        <p class="pl-8 text-green-300">"{engineerData.focus[3]}"</p>
+        <p class="pl-4">
+          &#41;;
+        </p>
+        <p class="pl-4">
+          <span class="text-purple-300">goal</span>: <span class="text-green-400">"{engineerData.goal}"</span>
+        </p>
+        <p>
+          &#41;;
+        </p>
+        <p class="pt-4 text-gray-500 italic">
+          {engineerData.quote}
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>

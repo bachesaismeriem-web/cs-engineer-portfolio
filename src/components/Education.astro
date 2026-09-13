@@ -1,0 +1,73 @@
+---
+import { educationData } from "../data/education";
+---
+
+<section id="education" class="reveal relative w-full bg-[#07020b] px-6 py-20 font-sans text-white md:px-12 scroll-mt-24">
+  <div class="max-w-7xl mx-auto">
+    
+    <div class="mb-12 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+      <div>
+        <span class="text-xs font-bold uppercase tracking-[0.2em] text-pink-500">{educationData.sectionTitle}</span>
+        <h2 class="mt-2 text-3xl font-extrabold tracking-tight text-white md:text-4xl">
+          {educationData.heading}
+        </h2>
+        <p class="mt-1 text-sm text-gray-400">{educationData.subtitle}</p>
+      </div>
+    </div>
+
+    <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+      <div class="relative ml-2 max-w-3xl border-l border-purple-500/30 pl-8">
+        {educationData.timeline.map((item) => (
+          <article class="relative mb-8 rounded-2xl border border-purple-500/20 bg-[#0e0617]/80 p-6 shadow-[0_0_24px_rgba(147,51,235,0.08)] transition duration-300 hover:-translate-y-1 hover:border-pink-500/50">
+            <span class="absolute -left-[2.35rem] top-7 h-3 w-3 rounded-full border-2 border-pink-400 bg-[#07020b] shadow-[0_0_14px_rgba(236,72,153,0.8)]"></span>
+            <p class="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-pink-400">{item.period}</p>
+            <h3 class="text-xl font-bold text-white">{item.degree}</h3>
+            <p class="mt-2 text-sm text-gray-400">{item.institution}</p>
+          </article>
+        ))}
+
+        <div class="border-l-2 border-pink-500 pl-4 text-sm italic text-gray-400">
+          {educationData.quote}
+        </div>
+      </div>
+
+      <figure class="education-photo group relative aspect-[4/3] overflow-hidden rounded-2xl border border-purple-500/25 bg-[#0e0617]/80 shadow-[0_0_30px_rgba(147,51,235,0.15)]" tabindex="0" aria-label="Interactive University of Boumerdes campus photo">
+        <img
+          src={educationData.imagePath}
+          alt="University of Boumerdes campus entrance"
+          class="education-photo-image h-full w-full object-cover"
+        />
+        <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#07020b]/90 via-transparent to-transparent"></div>
+        <div class="pointer-events-none absolute inset-x-4 top-4 flex items-center justify-between rounded-xl border border-white/20 bg-black/25 px-3 py-2 text-[10px] uppercase tracking-[0.16em] text-white/80 backdrop-blur-md">
+          <span class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_10px_#34d399]"></span>Campus archive</span>
+          <span>EDU / 01</span>
+        </div>
+        <figcaption class="pointer-events-none absolute inset-x-5 bottom-5 text-sm font-medium text-white">
+          <span class="block text-lg">University of Boumerdes</span>
+          <span class="mt-1 block text-xs text-white/60">Faculty of Science · Boumerdes, Algeria</span>
+        </figcaption>
+      </figure>
+
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const educationPhoto = document.querySelector<HTMLElement>('.education-photo');
+
+  if (educationPhoto) {
+    educationPhoto.addEventListener('pointermove', (event) => {
+      const bounds = educationPhoto.getBoundingClientRect();
+      const x = ((event.clientX - bounds.left) / bounds.width - 0.5) * 2;
+      const y = ((event.clientY - bounds.top) / bounds.height - 0.5) * 2;
+      educationPhoto.style.setProperty('--education-x', `${x * 4}deg`);
+      educationPhoto.style.setProperty('--education-y', `${y * -4}deg`);
+    });
+
+    educationPhoto.addEventListener('pointerleave', () => {
+      educationPhoto.style.setProperty('--education-x', '0deg');
+      educationPhoto.style.setProperty('--education-y', '0deg');
+    });
+  }
+</script>

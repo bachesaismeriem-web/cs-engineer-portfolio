@@ -1,0 +1,94 @@
+---
+import { skillsData } from '../data/skills.ts';
+---
+
+<section id="skills" class="reveal relative w-full bg-[#07020b] text-white py-16 px-6 md:px-12 font-sans overflow-hidden scroll-mt-24">
+  <div class="max-w-7xl mx-auto">
+    
+    <!-- Section Header Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+      <div>
+        <span class="text-pink-500 font-bold tracking-[0.2em] text-xs uppercase">{skillsData.sectionTitle}</span>
+        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mt-2 text-white">
+          {skillsData.heading}
+        </h2>
+        <p class="text-gray-400 text-sm mt-1">
+          {skillsData.subtitle}
+        </p>
+      </div>
+      <div>
+        <a href="#all-skills" class="text-xs font-semibold text-pink-400 hover:text-pink-300 transition-colors flex items-center gap-1 group">
+          View All Skills 
+          <span class="group-hover:translate-x-1 transition-transform">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Skills Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      
+      {skillsData.categories.map((category, index) => (
+        <button class="skill-card group bg-[#0e0617]/80 border border-purple-900/40 rounded-2xl p-6 text-left backdrop-blur-md shadow-[0_0_20px_rgba(147,51,235,0.08)] flex flex-col justify-between transition-all duration-300" type="button" data-skill-card={index} aria-pressed="false">
+          <div>
+            <!-- Category Header -->
+            <div class="flex items-center gap-3 mb-4">
+              <div class="skill-icon flex h-11 w-11 items-center justify-center rounded-xl bg-purple-950/60 text-pink-400 shadow-[0_0_18px_rgba(168,85,247,0.18)]">
+                {category.title === "Languages" && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="h-5 w-5"><path d="m8 9-3 3 3 3M16 9l3 3-3 3M14 5l-4 14" stroke-linecap="round" stroke-linejoin="round" /></svg>}
+                {category.title === "Web Development" && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="h-5 w-5"><rect x="3" y="4" width="18" height="16" rx="2" /><path d="M3 8h18M7 6h.01M10 6h.01M13 6h.01" stroke-linecap="round" /></svg>}
+                {category.title === "Backend & Databases" && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="h-5 w-5"><ellipse cx="12" cy="5" rx="7" ry="3" /><path d="M5 5v7c0 1.66 3.13 3 7 3s7-1.34 7-3V5M5 12v7c0 1.66 3.13 3 7 3s7-1.34 7-3v-7" /></svg>}
+                {category.title === "Networking" && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="h-5 w-5"><circle cx="12" cy="12" r="2.5" /><path d="M5.64 5.64a9 9 0 0 0 0 12.72M18.36 5.64a9 9 0 0 1 0 12.72M2.8 2.8a13 13 0 0 0 0 18.4M21.2 2.8a13 13 0 0 1 0 18.4" stroke-linecap="round" /></svg>}
+                {category.title === "Tools & DevOps" && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="h-5 w-5"><path d="m14.7 6.3 3-3 3 3-3 3M4 20l8.5-8.5M13 5l6 6M5 4l4 4-5 5 2 2 5-5 4 4" stroke-linecap="round" stroke-linejoin="round" /></svg>}
+                {category.title === "Other" && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="h-5 w-5"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.64 5.64l2.83 2.83M15.53 15.53l2.83 2.83M18.36 5.64l-2.83 2.83M8.47 15.53l-2.83 2.83" stroke-linecap="round" /><circle cx="12" cy="12" r="3" /></svg>}
+                {category.title === "Soft Skills" && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="h-5 w-5"><circle cx="12" cy="12" r="8" /><path d="M8 14c1.2 1.3 2.53 2 4 2s2.8-.7 4-2M9 10h.01M15 10h.01" stroke-linecap="round" /></svg>}
+              </div>
+              <h3 class="text-base font-semibold text-white tracking-wide">
+                {category.title}
+              </h3>
+            </div>
+
+            <!-- Skill Tags Pills -->
+            <div class="flex flex-wrap gap-2 mb-2">
+              {category.skills.map((skill) => (
+                <span class="skill-chip px-3 py-1.5 rounded-lg bg-[#160b24] border border-purple-500/20 text-gray-300 text-xs font-mono transition-colors">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+        </button>
+      ))}
+
+      <!-- Quote Box (Matching the Bottom-Right Card in the image) -->
+      <div class="bg-[#0e0617]/80 border border-purple-900/40 rounded-2xl p-6 backdrop-blur-md shadow-[0_0_20px_rgba(147,51,235,0.08)] flex flex-col justify-between">
+        <div>
+          <!-- Quote Icon -->
+          <div class="text-pink-500 text-2xl font-serif mb-3">
+            ❝
+          </div>
+          <p class="text-gray-200 text-sm md:text-base font-medium leading-relaxed italic">
+            "{skillsData.quote}"
+          </p>
+        </div>
+        <!-- Decorative Line Accent -->
+        <div class="w-12 h-1 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full mt-6"></div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const skillCards = document.querySelectorAll<HTMLButtonElement>('[data-skill-card]');
+
+  skillCards.forEach((card) => {
+    card.addEventListener('click', () => {
+      skillCards.forEach((item) => {
+        item.classList.remove('skill-card-active');
+        item.setAttribute('aria-pressed', 'false');
+      });
+      card.classList.add('skill-card-active');
+      card.setAttribute('aria-pressed', 'true');
+    });
+  });
+</script>

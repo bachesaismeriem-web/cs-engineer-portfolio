@@ -1,0 +1,175 @@
+---
+import { contactData } from "../data/Contact";
+---
+
+<section id="contact" class="reveal relative w-full bg-[#07020b] text-white py-16 px-6 md:px-12 font-sans overflow-hidden">
+  <div class="max-w-7xl mx-auto">
+    
+    <!-- Top Content Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      
+      <!-- Left Column: Contact Info & Details (5 columns) -->
+      <div class="contact-copy lg:col-span-5 flex flex-col gap-6">
+        <div>
+          <span class="text-pink-500 font-bold tracking-[0.2em] text-xs uppercase">{contactData.sectionTitle}</span>
+          <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mt-2 text-white">
+            {contactData.heading}
+          </h2>
+        </div>
+
+        <p class="text-gray-300 text-sm md:text-base leading-relaxed">
+          {contactData.description}
+        </p>
+
+        <!-- Contact Info Links (Email, Location, GitHub, LinkedIn) -->
+        <div class="flex flex-col gap-3.5 pt-2 text-sm text-gray-300">
+          
+          <!-- Gmail / Email -->
+          <a href={`mailto:${contactData.email}`} class="contact-link flex items-center gap-3 hover:text-pink-400 transition-colors">
+            <svg class="h-5 w-5 text-pink-400" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M3 18V6.8A1.8 1.8 0 0 1 5.8 5.35L12 10l6.2-4.65A1.8 1.8 0 0 1 21 6.8V18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M3 7v11h18V7" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+            </svg>
+            <span>{contactData.email}</span>
+          </a>
+
+          <!-- Location -->
+          <div class="flex items-center gap-3">
+            <span class="text-pink-400 text-base">📍</span>
+            <span>{contactData.location}</span>
+          </div>
+
+          <!-- GitHub -->
+          <a href={contactData.socials[0].url} target="_blank" rel="noopener noreferrer" class="contact-link flex items-center gap-3 hover:text-pink-400 transition-colors">
+            <svg class="h-5 w-5 text-purple-400" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2C6.48 2 2 6.58 2 12.24c0 4.52 2.87 8.35 6.84 9.71.5.1.68-.22.68-.49v-1.7c-2.78.62-3.37-1.22-3.37-1.22-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .08 1.53 1.06 1.53 1.06.9 1.58 2.35 1.12 2.92.86.09-.67.35-1.12.64-1.38-2.22-.26-4.55-1.14-4.55-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.18 9.18 0 0 1 12 7.17c.85 0 1.71.12 2.51.37 1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9v2.81c0 .27.18.6.69.49A10.25 10.25 0 0 0 22 12.24C22 6.58 17.52 2 12 2Z" />
+            </svg>
+            <span>{contactData.socials[0].display}</span>
+          </a>
+
+          <!-- LinkedIn -->
+          <a href={contactData.socials[1].url} target="_blank" rel="noopener noreferrer" class="contact-link flex items-center gap-3 hover:text-pink-400 transition-colors">
+            <svg class="h-5 w-5 text-purple-400" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M5.1 3.5A2.1 2.1 0 1 1 5.1 7.7a2.1 2.1 0 0 1 0-4.2ZM3.3 9h3.6v11.7H3.3V9Zm5.8 0h3.4v1.6h.05c.47-.9 1.62-1.85 3.34-1.85 3.57 0 4.23 2.35 4.23 5.4v6.54h-3.55v-5.8c0-1.38-.03-3.15-1.92-3.15-1.92 0-2.22 1.5-2.22 3.05v5.9H9.1V9Z" />
+            </svg>
+            <span>{contactData.socials[1].display}</span>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive Form Box (7 columns) -->
+      <div class="contact-panel lg:col-span-7 bg-[#0e0617]/90 border border-purple-900/50 rounded-2xl p-6 md:p-8 shadow-[0_0_30px_rgba(147,51,235,0.15)] backdrop-blur-md">
+        <form class="flex flex-col gap-5" action="https://formsubmit.co/bachesaismeriem@gmail.com" method="POST" target="_blank">
+          <input type="hidden" name="_subject" value="New portfolio contact message" />
+          <input type="hidden" name="_captcha" value="true" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_next" value="https://meriem-bachesais.portfolio/thanks" />
+          
+          <!-- Name & Email Row -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div class="flex flex-col gap-2">
+              <label for="name" class="text-xs text-gray-400 font-medium">Name</label>
+              <input
+                type="text" 
+                id="name" 
+                name="name"
+                placeholder="Your name" 
+                class="bg-[#150a21] border border-purple-500/30 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-pink-500 transition-colors"
+                required
+              />
+            </div>
+
+            <div class="flex flex-col gap-2">
+              <label for="email" class="text-xs text-gray-400 font-medium">Email</label>
+              <input
+                type="email" 
+                id="email" 
+                name="email"
+                placeholder="your@email.com" 
+                class="bg-[#150a21] border border-purple-500/30 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-pink-500 transition-colors"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Message Field -->
+          <div class="flex flex-col gap-2">
+            <label for="message" class="text-xs text-gray-400 font-medium">Message</label>
+            <textarea
+              id="message" 
+              name="message"
+              rows="4" 
+              maxlength="500"
+              placeholder="Type your message..." 
+              class="bg-[#150a21] border border-purple-500/30 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-pink-500 transition-colors resize-none"
+              required
+            ></textarea>
+            <div class="flex justify-end text-[11px] text-zinc-500"><span data-character-count>0</span>/500</div>
+          </div>
+
+          <!-- Submit Button -->
+          <button 
+            type="submit" 
+            class="mt-2 w-full py-3.5 rounded-xl bg-gradient-to-r from-fuchsia-600 to-pink-600 hover:from-fuchsia-500 hover:to-pink-500 text-white font-medium text-sm shadow-[0_0_20px_rgba(217,70,239,0.4)] transition-all duration-300 flex items-center justify-center gap-2 group"
+          >
+            <span>Send Message</span>
+            <span class="group-hover:translate-x-1 transition-transform">→</span>
+          </button>
+
+        </form>
+      </div>
+
+    </div>
+
+    <!-- Footer Wave / Bottom Bar -->
+    <div class="mt-20 pt-8 border-t border-purple-900/30 flex flex-col md:flex-row items-center justify-between gap-6 relative">
+      
+      <!-- Brand Logo -->
+      <div class="flex items-center gap-2 text-white font-mono font-bold tracking-wider">
+        <span class="text-pink-500">&lt;/&gt;</span>
+        <span>{contactData.brandName}</span>
+      </div>
+
+      <!-- Bottom Social Icons (GitHub, LinkedIn, Gmail only) -->
+      <div class="flex items-center gap-4 text-gray-400">
+        <!-- GitHub Icon -->
+        <a href={contactData.socials[0].url} target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-[#12071d] border border-purple-500/20 flex items-center justify-center hover:text-white hover:border-pink-500 transition-colors" aria-label="GitHub">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2C6.48 2 2 6.58 2 12.24c0 4.52 2.87 8.35 6.84 9.71.5.1.68-.22.68-.49v-1.7c-2.78.62-3.37-1.22-3.37-1.22-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .08 1.53 1.06 1.53 1.06.9 1.58 2.35 1.12 2.92.86.09-.67.35-1.12.64-1.38-2.22-.26-4.55-1.14-4.55-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.18 9.18 0 0 1 12 7.17c.85 0 1.71.12 2.51.37 1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9v2.81c0 .27.18.6.69.49A10.25 10.25 0 0 0 22 12.24C22 6.58 17.52 2 12 2Z" />
+          </svg>
+        </a>
+        <!-- LinkedIn Icon -->
+        <a href={contactData.socials[1].url} target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-[#12071d] border border-purple-500/20 flex items-center justify-center hover:text-white hover:border-pink-500 transition-colors" aria-label="LinkedIn">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M5.1 3.5A2.1 2.1 0 1 1 5.1 7.7a2.1 2.1 0 0 1 0-4.2ZM3.3 9h3.6v11.7H3.3V9Zm5.8 0h3.4v1.6h.05c.47-.9 1.62-1.85 3.34-1.85 3.57 0 4.23 2.35 4.23 5.4v6.54h-3.55v-5.8c0-1.38-.03-3.15-1.92-3.15-1.92 0-2.22 1.5-2.22 3.05v5.9H9.1V9Z" />
+          </svg>
+        </a>
+        <!-- Gmail Icon -->
+        <a href={`mailto:${contactData.email}`} class="w-9 h-9 rounded-full bg-[#12071d] border border-purple-500/20 flex items-center justify-center hover:text-white hover:border-pink-500 transition-colors" aria-label="Email">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M3 18V6.8A1.8 1.8 0 0 1 5.8 5.35L12 10l6.2-4.65A1.8 1.8 0 0 1 21 6.8V18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M3 7v11h18V7" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+          </svg>
+        </a>
+      </div>
+
+      <!-- Copyright Notice -->
+      <div class="text-xs text-gray-400">
+        &copy; {contactData.copyrightYear} {contactData.brandName}. All rights reserved.
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const messageField = document.querySelector<HTMLTextAreaElement>('#message');
+  const characterCount = document.querySelector<HTMLElement>('[data-character-count]');
+
+  messageField?.addEventListener('input', () => {
+    if (characterCount) characterCount.textContent = String(messageField.value.length);
+  });
+
+</script>

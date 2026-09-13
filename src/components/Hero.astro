@@ -1,0 +1,107 @@
+---
+import { heroData } from "../data/Hero";
+---
+
+<section id="home" class="relative w-full bg-[#07020b] text-white py-16 md:py-24 px-6 md:px-12 overflow-hidden font-sans scroll-mt-24">
+  <!-- Background Glow Effects -->
+  <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute bottom-10 right-10 w-[500px] h-[500px] bg-fuchsia-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+    
+    <!-- Left Column: Text & Content (7 columns) -->
+    <div class="lg:col-span-7 flex flex-col gap-6">
+      
+      <!-- Top Pill Badge -->
+      <div>
+        <span class="inline-block px-4 py-1.5 rounded-full bg-[#150a21] border border-purple-500/30 text-purple-300 text-xs font-medium tracking-wide shadow-[0_0_15px_rgba(168,85,247,0.15)]">
+          {heroData.badge}
+        </span>
+      </div>
+
+      <!-- Main Heading -->
+      <h1 class="hero-title">
+        <span class="text-white block">{heroData.titlePart1}</span>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 via-pink-500 to-purple-500 block drop-shadow-[0_0_25px_rgba(217,70,239,0.3)]">
+          {heroData.titlePart2}
+        </span>
+      </h1>
+
+      <!-- Description -->
+      <p class="text-gray-300 text-base md:text-lg leading-relaxed max-w-2xl font-light">
+        {heroData.description}
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-wrap items-center gap-4 pt-2">
+        <a href="#experience" class="px-7 py-3.5 rounded-xl bg-gradient-to-r from-fuchsia-600 to-purple-600 hover:from-fuchsia-500 hover:to-purple-500 text-white font-medium text-sm md:text-base shadow-[0_0_20px_rgba(192,38,211,0.4)] transition-all duration-300 flex items-center gap-2 group">
+          {heroData.primaryCta}
+          <span class="group-hover:translate-x-1 transition-transform">→</span>
+        </a>
+
+        <a href="mailto:bachesaismeriem@gmail.com?subject=CV%20Request" class="px-7 py-3.5 rounded-xl bg-[#12071d] hover:bg-[#1a0a29] border border-purple-500/30 text-gray-200 font-medium text-sm md:text-base transition-all duration-300 flex items-center gap-2">
+          {heroData.secondaryCta}
+          <span class="text-pink-400 text-sm">→</span>
+        </a>
+      </div>
+
+      <!-- Bottom Highlights Bar -->
+      <div class="pt-8 border-t border-purple-900/40 grid grid-cols-2 sm:grid-cols-4 gap-4">
+        {heroData.highlights.map((item) => (
+          <div class="flex items-center gap-2.5">
+            <span class="text-pink-400 text-sm">{item.icon}</span>
+            <span class="text-xs md:text-sm text-gray-300 font-medium">{item.label}</span>
+          </div>
+        ))}
+      </div>
+
+    </div>
+
+    <!-- Right Column: Software engineering workspace image -->
+    <div class="lg:col-span-5 relative flex justify-center items-center">
+      <div class="photo-frame group relative aspect-[4/3] w-full max-w-lg overflow-hidden rounded-[2rem]" tabindex="0" aria-label="Interactive software engineering workspace preview">
+        <img
+          src="/images/hero-graphic.png.png"
+          alt="Software Engineer workspace"
+          class="photo-image absolute inset-0 h-full w-full object-cover opacity-100"
+        />
+        <div class="absolute inset-0 bg-gradient-to-r from-[#07020b]/60 via-transparent to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-[#07020b]/70 via-transparent to-transparent"></div>
+        <div class="photo-chrome absolute inset-x-4 top-4 flex items-center justify-between rounded-xl border border-white/15 bg-black/25 px-3 py-2 text-[10px] uppercase tracking-[0.18em] text-white/70 backdrop-blur-md">
+          <span class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_10px_#34d399]"></span>Available for work</span>
+          <span>SW / 01</span>
+        </div>
+        <div class="photo-depth absolute right-5 top-1/2 hidden -translate-y-1/2 flex-col gap-2 text-right text-[10px] uppercase tracking-[0.16em] text-white/60 sm:flex">
+          <span>Build</span>
+          <span class="text-pink-300">Iterate</span>
+          <span>Ship</span>
+        </div>
+        <div class="photo-scan pointer-events-none absolute inset-y-0 -left-1/2 w-1/3 skew-x-[-18deg] bg-gradient-to-r from-transparent via-white/25 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus:opacity-100"></div>
+        <div class="absolute bottom-4 left-4 rounded-full border border-white/20 bg-black/30 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-white/80 backdrop-blur-sm opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus:opacity-100">
+          Move across the image
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const photoFrame = document.querySelector<HTMLElement>('.photo-frame');
+
+  if (photoFrame) {
+    const updateParallax = (event: PointerEvent) => {
+      const bounds = photoFrame.getBoundingClientRect();
+      const x = ((event.clientX - bounds.left) / bounds.width - 0.5) * 2;
+      const y = ((event.clientY - bounds.top) / bounds.height - 0.5) * 2;
+      photoFrame.style.setProperty('--photo-x', `${x * 5}deg`);
+      photoFrame.style.setProperty('--photo-y', `${y * -5}deg`);
+    };
+
+    photoFrame.addEventListener('pointermove', updateParallax);
+    photoFrame.addEventListener('pointerleave', () => {
+      photoFrame.style.setProperty('--photo-x', '0deg');
+      photoFrame.style.setProperty('--photo-y', '0deg');
+    });
+  }
+</script>

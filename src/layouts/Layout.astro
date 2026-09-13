@@ -1,23 +1,71 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+import "../styles/global.css";
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Software Engineer | Portfolio",
+  description = "Software Engineering Student Portfolio"
+} = Astro.props;
+---
+
+<!doctype html>
+
+<html lang="en">
+
+  <head>
+
+    <meta charset="UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <meta
+      name="description"
+      content={description}
+    />
+
+    <title>{title}</title>
+
+  </head>
+
+  <body>
+
+    <slot />
+
+    <script>
+      const revealItems = document.querySelectorAll<HTMLElement>('.reveal');
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (reducedMotion) {
+        revealItems.forEach((item) => item.classList.add('reveal-visible'));
+      } else {
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('reveal-visible');
+                revealObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12 }
+        );
+
+        revealItems.forEach((item) => revealObserver.observe(item));
+      }
+
+      const navbar = document.querySelector<HTMLElement>('nav');
+      const updateNavbar = () => navbar?.classList.toggle('nav-scrolled', window.scrollY > 24);
+      updateNavbar();
+      window.addEventListener('scroll', updateNavbar, { passive: true });
+    </script>
+
+  </body>
+
+</html>
