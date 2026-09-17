@@ -14,14 +14,14 @@ export const certificationsData = {
     {
       issuer: "Cisco Networking Academy",
       title: "Operating Systems Support",
-      status: "Issued August 2026",
+      status: "completed",
       tag: "IT Support",
       description: "Completed Cisco's Operating Systems course, gaining practical knowledge in OS concepts, Windows and macOS troubleshooting, and software management."
     },
     {
       issuer: "Cisco Networking Academy",
       title: "IT Support",
-      status: "Issued August 2026",
+      status: "completed",
       tag: "Help Desk",
       description: "Successfully completed the IT Customer Support Basics course, providing a strong foundation in IT help desk principles."
     },

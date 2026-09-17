@@ -17,6 +17,22 @@ export const experienceData = {
       ]
     },
     {
+
+    
+    role: "Math Teacher",
+    company: "Primary & Middle Schools",
+    location: "Algeria",
+    period: "2023 – 2024",
+    type: "Experience",
+    description: [
+         "Taught mathematics to primary and middle school students.",
+         "Explained mathematical concepts using clear and age-appropriate methods.",
+        "Prepared lessons, exercises, and practice activities based on students’ learning levels.",
+        "Assessed students’ understanding and provided individual support when needed.",
+        "Helped students improve their problem-solving and logical reasoning skills."
+    ]
+    },
+    {
       role: "IT Intern",
       company: "ELHAYAT COMPANY",
       location: "Blida",
